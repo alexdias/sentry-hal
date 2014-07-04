@@ -12,7 +12,7 @@ log = logging.getLogger(__name__)
 
 
 class HALConfigurationForm(NotificationConfigurationForm):
-    host = forms.CharField(label='Host', required=False, help_text='host'
+    host = forms.CharField(label='Host', required=False, help_text='host')
     port = forms.IntegerField(label='Port', required=False, help_text='port')
     channel = forms.CharField(label='Channel', required=False, help_text='channel')
 
