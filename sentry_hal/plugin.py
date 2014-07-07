@@ -37,10 +37,14 @@ class HALMessage(Plugin):
         message = '[sentry %s] %s (%s)' % (event.server_name, event.message, link)
         self.send_payload(event.project, message)
 
+    def resolve_address_host(self, address):
+        assert len(address) == 2, address
+        return (socket.gethostbyname(address[0]), address[1])
+
     def send_payload(self, project, message):
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        sock.connect((self.get_option('host', project), self.get_option('port', project)))
-        msg = json.dumps(dict(message=message, room=self.get_option('channel', project))).encode()
-        bytes_sent = sock.sendto(payload, self._address)
+        address = self.resolve_address_host((self.get_option('host', project), int(self.get_option('port', project))))
+        payload = json.dumps(dict(message=message, room=self.get_option('channel', project))).encode()
+        bytes_sent = sock.sendto(payload, address)
         if bytes_sent != len(payload):
             log.warn('Sent %s bytes instead of %s. Payload: %s', bytes_sent, len(payload), payload)
