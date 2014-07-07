@@ -20,7 +20,7 @@ install_requires = [
 
 setup(
     name='sentry-hal',
-    version='0.1.2',
+    version='0.1.3',
     author='Alexandre Dias',
     author_email='alexnvdias@gmail.com',
     url='http://www.github.com/alexnvdias',
