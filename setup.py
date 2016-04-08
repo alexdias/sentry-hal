@@ -21,9 +21,9 @@ install_requires = [
 setup(
     name='sentry-hal',
     version='0.1.3',
-    author='Alexandre Dias',
-    author_email='alexnvdias@gmail.com',
-    url='http://www.github.com/alexnvdias',
+    author='Smarkets Limited',
+    author_email='ops@smarkets.com',
+    url='http://www.github.com/smarkets/sentry-hal',
     description='A Sentry extension which integrates with a JSON based XMPP chat bot',
     long_description=__doc__,
     license='BSD',
