@@ -15,12 +15,12 @@ tests_require = [
 ]
 
 install_requires = [
-    'sentry>=4.6.0',
+    'sentry>=8.3.2',
 ]
 
 setup(
     name='sentry-hal',
-    version='0.1.3',
+    version='0.2.0',
     author='Smarkets Limited',
     author_email='ops@smarkets.com',
     url='http://www.github.com/smarkets/sentry-hal',

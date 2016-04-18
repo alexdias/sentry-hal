@@ -22,8 +22,8 @@ class HALMessage(Plugin):
     conf_key = 'hal'
     slug = 'hal'
     version = sentry_hal.VERSION
-    author = 'Alexandre Dias'
-    author_url = 'http://www.github.com/alexdias'
+    author = 'Smarkets'
+    author_url = 'http://www.github.com/smarkets/sentry-hal'
     project_conf_form = HALConfigurationForm
 
     def is_configured(self, project):
@@ -32,7 +32,7 @@ class HALMessage(Plugin):
     def post_process(self, group, event, is_new, is_sample, **kwargs):
         if not is_new or not self.is_configured(event.project):
             return
-        link = '%s/%s/group/%d/' % (settings.SENTRY_URL_PREFIX, group.project.slug,
+        link = '%s/sentry/%s/group/%d/' % (settings.SENTRY_URL_PREFIX, group.project.slug,
                                     group.id)
         message = '[sentry %s] %s (%s)' % (event.server_name, event.message, link)
         self.send_payload(event.project, message)
